@@ -12,3 +12,5 @@ select name, population, area from World where area >= 3000000 or population >= 
 # 1148. Article Views is
 select distinct author_id as id from Views where author_id = viewer_id order by id
 
+# 1683. Invalid Tweets
+select tweet_id from Tweets where length(content) > 15 
