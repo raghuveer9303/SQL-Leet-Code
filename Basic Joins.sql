@@ -21,4 +21,12 @@ HAVING
   COUNT(t.visit_id) > 0;  -- Exclude customers with 0 transactions
 
 # 197. Rising Temperature
-
+SELECT W1.id 
+FROM
+    Weather W1
+JOIN
+    Weather W2
+ON
+    DATEDIFF(W1.recordDate, w2.recordDate) = 1
+WHERE
+    W1.temperature > W2.temperature
