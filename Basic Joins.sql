@@ -20,4 +20,5 @@ GROUP BY
 HAVING 
   COUNT(t.visit_id) > 0;  -- Exclude customers with 0 transactions
 
-  
+# 197. Rising Temperature
+
