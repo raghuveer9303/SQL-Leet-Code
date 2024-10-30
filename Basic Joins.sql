@@ -30,3 +30,4 @@ ON
     DATEDIFF(W1.recordDate, w2.recordDate) = 1
 WHERE
     W1.temperature > W2.temperature
+
