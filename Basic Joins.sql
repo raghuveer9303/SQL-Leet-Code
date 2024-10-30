@@ -46,3 +46,12 @@ MACHINE_START_TIME AS M1
 INNER JOIN MACHINE_END_TIME AS M2 ON
 M1.machine_id = M2.machine_id AND M1.process_id = M2.process_ID
 GROUP BY M1.machine_id
+
+
+# 577. Employee Bonus
+# Write your MySQL query statement below
+SELECT E.name, B.bonus FROM 
+Employee AS E
+LEFT JOIN Bonus AS B
+ON E.empId = B.empId
+WHERE B.bonus < 1000 OR B.bonus IS NULL;
