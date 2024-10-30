@@ -31,3 +31,18 @@ ON
 WHERE
     W1.temperature > W2.temperature
 
+# 1661. Average Time of Process per Machine
+# Write your MySQL query statement below
+WITH
+    MACHINE_START_TIME AS (
+        SELECT * FROM Activity WHERE activity_type = 'start'
+    ),
+    MACHINE_END_TIME AS (
+        SELECT * FROM Activity WHERE activity_type = 'end'
+)
+
+SELECT M1.machine_id, ROUND(AVG(M2.timestamp - M1.timestamp), 3) AS processing_time FROM 
+MACHINE_START_TIME AS M1 
+INNER JOIN MACHINE_END_TIME AS M2 ON
+M1.machine_id = M2.machine_id AND M1.process_id = M2.process_ID
+GROUP BY M1.machine_id
