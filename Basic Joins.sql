@@ -65,3 +65,12 @@ LEFT JOIN Examinations AS E
 ON S.student_id = E.student_id AND Sub.subject_name = E.subject_name
 GROUP BY S.student_id, S.student_name, Sub.subject_name
 ORDER BY S.student_id, Sub.subject_name
+
+# 570. Managers with at Least 5 Direct Reports
+
+SELECT E1.name
+FROM Employee as E1
+INNER JOIN Employee as E2
+WHERE E1.id = E2.managerId
+GROUP BY E1.id
+HAVING COUNT(E2.managerId) >=5 
