@@ -74,3 +74,10 @@ INNER JOIN Employee as E2
 WHERE E1.id = E2.managerId
 GROUP BY E1.id
 HAVING COUNT(E2.managerId) >=5 
+
+# 1934. Confirmation recordDate
+SELECT S.user_id, ROUND(COALESCE(SUM(CASE WHEN C.action = 'confirmed' THEN 1 ELSE 0 END)/COUNT(C.action),0),2) AS confirmation_rate
+FROM Signups AS S
+LEFT JOIN Confirmations AS C
+ON S.user_id = C.user_id
+GROUP BY S.user_id
