@@ -33,3 +33,9 @@ SELECT query_name, ROUND(SUM(rating/position)/COUNT(query_name),2) AS quality, R
 FROM Queries
 WHERE query_name IS NOT NULL
 GROUP BY query_name
+
+# 1193. Monthly Transactions 1
+SELECT DATE_FORMAT(STR_TO_DATE(CONCAT(YEAR(trans_date),'-',MONTH(trans_date)), '%Y-%m'), '%Y-%m') AS month, country, COUNT(*) AS trans_count, SUM(CASE WHEN state = 'approved' THEN 1 ELSE 0 END) AS approved_count,
+    SUM(amount) as trans_total_amount, SUM(CASE WHEN state = 'approved' THEN amount ELSE 0 END) AS approved_total_amount
+FROM Transactions
+GROUP BY country, YEAR(trans_date), MONTH(trans_date)
