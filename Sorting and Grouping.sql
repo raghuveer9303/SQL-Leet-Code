@@ -34,3 +34,16 @@ SELECT IFNULL((
     ORDER BY num DESC 
     LIMIT 1
 ), NULL) AS num;
+
+
+# 1045 Customers who bought all products
+
+WITH Product_Count AS (
+    SELECT COUNT(DISTINCT product_key) AS pd_count 
+    FROM Product
+)
+
+SELECT customer_id 
+FROM Customer 
+GROUP BY customer_id 
+HAVING COUNT(DISTINCT product_key) = (SELECT pd_count FROM Product_Count)
