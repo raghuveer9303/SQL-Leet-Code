@@ -11,3 +11,8 @@ FROM Activity
 WHERE datediff('2019-07-27',activity_date)<30 
 AND activity_date <= '2019-07-27' 
 GROUP BY activity_date
+
+
+# 596. Classes More Than 5 Students
+
+SELECT class FROM Courses GROUP BY class HAVING COUNT(class) >= 5
