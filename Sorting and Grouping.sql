@@ -23,3 +23,14 @@ SELECT class FROM Courses GROUP BY class HAVING COUNT(class) >= 5
 SELECT user_id, COUNT(follower_id) AS followers_count FROM Followers
 GROUP BY user_id
 ORDER BY user_id ASC
+
+# 619. Biggest Single Number
+
+SELECT IFNULL((
+    SELECT num 
+    FROM MyNumbers 
+    GROUP BY num 
+    HAVING count(*) = 1 AND num = MAX(num) 
+    ORDER BY num DESC 
+    LIMIT 1
+), NULL) AS num;
