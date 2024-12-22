@@ -16,3 +16,9 @@ UNION
 
 SELECT employee_id, department_id FROM Employee
 WHERE primary_flag = 'Y'
+
+
+-- 610. Triangle Judgement
+
+SELECT *, IF(x+y>z and y+z>x and z+x>y) THEN "Yes" ELSE "No" as triangle FROM Triangle
+
