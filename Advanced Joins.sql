@@ -22,3 +22,15 @@ WHERE primary_flag = 'Y'
 
 SELECT *, IF(x+y>z and y+z>x and z+x>y) THEN "Yes" ELSE "No" as triangle FROM Triangle
 
+
+-- 180. Consecutive Numbers
+
+WITH CTE_3_CONSECUTIVE_NUMS AS (
+SELECT id,num,
+    LEAD(num) OVER (ORDER BY id) AS next_1day,
+    LEAD(num,2) OVER (ORDER BY id) AS next_2day
+FROM Logs 
+)
+
+SELECT DISTINCT num AS ConsecutiveNums FROM CTE_3_CONSECUTIVE_NUMS WHERE num = next_1day AND num = next_2day
+
