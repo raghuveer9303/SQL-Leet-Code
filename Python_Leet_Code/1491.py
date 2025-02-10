@@ -6,4 +6,4 @@ class Solution:
         salary.sort()
         total = len(salary) - 2 
         avg = sum(salary[1:-1])/total
-        return avg
+        return avg  
